@@ -1,0 +1,26 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class JosephusProblem {
+
+    public static void main(String[] args) {
+        int n = 20; 
+        int m = 3;
+        List<Integer> pessoas = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            pessoas.add(i);
+        }
+        int sobrevivente = josephus(pessoas, m);
+        System.out.println("A pessoa sobrevivente é a de número: " + sobrevivente);
+    }
+
+    public static int josephus(List<Integer> pessoas, int m) {
+        if (pessoas.size() == 1) {
+            return pessoas.get(0);
+        }
+        int eliminado = (m - 1) % pessoas.size();
+        pessoas.remove(eliminado);
+
+        return josephus(pessoas, m);
+    }
+}
